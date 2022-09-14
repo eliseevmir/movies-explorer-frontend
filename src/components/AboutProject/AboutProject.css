@@ -1,0 +1,63 @@
+.project {
+  padding: 110px 70px;
+  background: #fafafa;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #000000;
+}
+
+.project__stage {
+  display: flex;
+  margin: 70px auto 0;
+  justify-content: space-between;
+}
+
+.project__container {
+  max-width: 550px;
+}
+
+.project__header {
+  font: inherit;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.project__text {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  margin: 26px auto 0;
+}
+
+.project__duration {
+  text-align: center;
+  display: grid;
+  margin: 110px auto 0;
+  grid-template-columns: 1fr 4fr;
+}
+
+.project__week {
+  margin: 9px 0;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.project__dev {
+  margin: 14px 0 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #a0a0a0;
+}
+
+.project__one-week {
+  background: #3456f3;
+  color: #ffffff;
+}
+
+.project__four-week {
+  background: #f2f2f2;
+}
