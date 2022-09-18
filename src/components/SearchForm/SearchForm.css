@@ -1,0 +1,70 @@
+.search {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.search__block {
+  padding-top: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search__input {
+  flex-grow: 1;
+  margin: 0 10px 0 0;
+  padding: 0 0 0 20px;
+  background: #f4f4f4;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  line-height: 18px;
+  color: #a0a0a0;
+  outline: none;
+}
+
+.search__check {
+  padding: 0 0 40px 0;
+  display: flex;
+  justify-content: center;
+  margin: 30px auto 0;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.search__checkbox {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  -webkit-appearance: none;
+  outline: none;
+  background: #ebebeb;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+
+.search__checkbox:checked {
+  background: #2be080;
+}
+
+.search__checkbox::before {
+  content: "";
+  position: absolute;
+  outline: none;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #f5f5f5;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+.search__checkbox:checked::before {
+  transform: translateX(16px);
+}
+
+.search__text {
+  margin: 0 0 0 12px;
+  font-size: 12px;
+  line-height: 18px;
+}

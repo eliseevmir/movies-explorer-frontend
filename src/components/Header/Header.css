@@ -1,0 +1,17 @@
+.header {
+  padding: 18px 0;
+}
+
+.header__color-grey {
+  background: #dddee3;
+}
+
+.header__color-white {
+  background: #fafafa;
+}
+
+.header__block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

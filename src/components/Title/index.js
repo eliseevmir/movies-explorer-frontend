@@ -1,9 +1,9 @@
 import "./Title.css";
 
-function Title({ titleText }) {
+function Title({ children }) {
     return (
         <div className="title">
-            <h2 className="title__name">{titleText}</h2>
+            <h2 className="title__name">{children}</h2>
         </div>
     );
 }

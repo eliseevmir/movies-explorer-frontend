@@ -1,0 +1,39 @@
+.footer {
+  margin: 0;
+  padding: 79px 0 20px;
+  background: #f8f8f8;
+  position: relative;
+}
+
+.footer__text {
+  padding-bottom: 20px;
+  margin: 0 0 20px;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #a0a0a0;
+}
+
+.footer__year {
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.footer__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__school {
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.footer__link {
+  color: #000000;
+  text-decoration: none;
+  margin: 0 0 0 20px;
+  font-size: 13px;
+  line-height: 16px;
+}

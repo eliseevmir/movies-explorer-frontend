@@ -1,0 +1,41 @@
+.promo {
+  background-color: #dddee3;
+  padding-bottom: 75px;
+}
+
+.promo__info {
+  display: flex;
+  justify-content: space-between;
+  padding: 75px 0 84px;
+}
+
+.promo__project {
+  max-width: 640px;
+}
+
+.promo__header {
+  font: inherit;
+  font-size: 50px;
+  line-height: 58px;
+  margin: 0;
+}
+
+.promo__text {
+  max-width: 310px;
+  font-size: 13px;
+  line-height: 16px;
+  opacity: 0.5;
+  margin: 36px 0 0;
+}
+
+.promo__button {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  width: 129px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  border-radius: 3px;
+  background-color: transparent;
+}

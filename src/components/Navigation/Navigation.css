@@ -1,0 +1,20 @@
+.navigation {
+  margin: 0 0 0 44px;
+  flex-grow: 1;
+}
+
+.navigation__films {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  color: #000000;
+}
+
+.navigation__save-films {
+  margin: 0 0 0 16px;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 18px;
+  color: #000000;
+}
