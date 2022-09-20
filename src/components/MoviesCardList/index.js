@@ -1,18 +1,16 @@
 import "./MoviesCardList.css";
-import MoviesCard from "../MoviesCard";
+import MovieCard from "../MovieCard";
 
 function MoviesCardList() {
-
     return (
         <section className="card">
             <ul className="card__list">
-                <MoviesCard />
-                <MoviesCard />
-                <MoviesCard />
-                <MoviesCard />
-                <MoviesCard />
-                <MoviesCard />
-
+                <MovieCard />
+                <MovieCard />
+                <MovieCard />
+                <MovieCard />
+                <MovieCard />
+                <MovieCard />
             </ul>
 
         </section>

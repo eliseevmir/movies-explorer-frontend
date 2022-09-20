@@ -1,0 +1,19 @@
+.question {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.question__text {
+  margin: 0 6px 0 0;
+  font-size: 14px;
+  line-height: 17px;
+  color: #a0a0a0;
+}
+
+.question__link {
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 17px;
+  color: #3456f3;
+}

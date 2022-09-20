@@ -26,14 +26,16 @@
 }
 
 .footer__school {
+  text-decoration: none;
   font-size: 13px;
   line-height: 16px;
+  color: #000000;
 }
 
 .footer__link {
-  color: #000000;
   text-decoration: none;
   margin: 0 0 0 20px;
   font-size: 13px;
   line-height: 16px;
+  color: #000000;
 }

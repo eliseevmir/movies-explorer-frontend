@@ -1,5 +1,5 @@
-import ContentArea from "../ContentArea";
 import "./Header.css";
+import ContentArea from "../ContentArea";
 import headerLogo from "../../image/logo.svg"
 
 

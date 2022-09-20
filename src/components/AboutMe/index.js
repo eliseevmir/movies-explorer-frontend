@@ -1,11 +1,12 @@
 import "./AboutMe.css";
 import photoStudent from "../../image/photo.png";
-import Portfolio from "../Portfolio";
+
 
 function AboutMe({ children }) {
+    const [title, portfolio] = children;
     return (
         <section className="student">
-            {children}
+            {title}
             <div className="student__card">
                 <div className="student__info">
                     <h2 className="student__name">Владимир</h2>
@@ -28,7 +29,7 @@ function AboutMe({ children }) {
                 </div>
                 <img className="student__photo" src={photoStudent} alt="Фотография студента"></img>
             </div>
-            <Portfolio />
+            {portfolio}
         </section>
     );
 }

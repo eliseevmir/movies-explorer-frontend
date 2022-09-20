@@ -1,7 +1,7 @@
 import "./SearchForm.css";
 import searchButton from "../../image/search__button.svg"
 
-function SearchForm() {
+function SearchForm({ children }) {
 
     return (
 
@@ -10,10 +10,7 @@ function SearchForm() {
                 <input className="search__input" placeholder="Фильм" type="text"></input>
                 <img src={searchButton} alt="Кнопка поиска" />
             </div>
-            <div className="search__check">
-                <input className="search__checkbox" type="checkbox"></input>
-                <span className="search__text">Короткометражки</span>
-            </div>
+            {children}
         </section>
 
     )

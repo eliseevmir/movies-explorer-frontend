@@ -1,11 +1,12 @@
 import Header from "../../components/Header";
 import Navigation from "../../components/Navigation";
 import Account from "../../components/Account";
-import Movies from "../../components/Movies";
+import MainMovie from "../../components/MainMovie";
+import Block from "../../components/Block"
 import Footer from "../../components/Footer";
 
 
-function MovieContainer() {
+function SaveMovie() {
 
     return (
         <>
@@ -13,10 +14,12 @@ function MovieContainer() {
                 <Navigation />
                 <Account />
             </Header>
-            <Movies />
+            <MainMovie >
+                <Block />
+            </MainMovie>
             <Footer />
         </>
     )
 }
 
-export default MovieContainer;
+export default SaveMovie;

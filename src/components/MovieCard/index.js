@@ -1,7 +1,7 @@
 import "./MoviesCard.css";
 import cardPhoto from "../../image/mr__robot.jpg";
 
-function MoviesCard() {
+function MovieCard() {
     return (
         <li className="card__movie">
             <div className="card__info">
@@ -21,4 +21,4 @@ function MoviesCard() {
     );
 }
 
-export default MoviesCard;
+export default MovieCard;

@@ -1,0 +1,66 @@
+.user {
+  text-align: center;
+  background: #ffffff;
+}
+
+.user__name {
+  margin: 74px auto 0;
+  font: inherit;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.user__form {
+  display: flex;
+  flex-direction: column;
+  max-width: 410px;
+  margin: 123px auto 70px;
+}
+
+.user__label {
+  display: flex;
+  justify-content: space-between;
+  text-align: start;
+  margin: 17px 0 0;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.user__label:nth-child(1) {
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 16px;
+  margin: 0;
+}
+
+.user__input {
+  padding: 0;
+  border: none;
+  outline: none;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: right;
+}
+
+.user__submit {
+  width: 100%;
+  border: none;
+  padding: 0;
+  margin: 220px 0 0 0;
+  background: transparent;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.user__button {
+  width: 100%;
+  border: none;
+  padding: 0;
+  margin: 16px 0 0 0;
+  background: transparent;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #ee3465;
+}

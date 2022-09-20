@@ -1,0 +1,16 @@
+.auth-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.header__logo {
+  width: 38px;
+}
+
+.header__text {
+  font: inherit;
+  margin: 40px 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}

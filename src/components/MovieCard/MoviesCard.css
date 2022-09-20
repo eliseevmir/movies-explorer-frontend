@@ -11,6 +11,7 @@
 }
 
 .card__button {
+  padding: 0;
   background-image: url(../../image/save__movie__off.svg);
   background-size: contain;
   width: 30px;
