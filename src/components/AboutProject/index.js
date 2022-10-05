@@ -18,7 +18,6 @@ function AboutProject({ children }) {
                     </h3>
                     <p className="project__text">
                         У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было
-                        <br />
                         соблюдать, чтобы успешно защититься.
                     </p>
                 </div>

@@ -16,7 +16,7 @@ function MainLogin() {
                 </ButtonForm>
             </AuthForm>
 
-            <Question question="Уже зарегистрированы?" textLink="Войти" path="#" />
+            <Question question="Ещё не зарегистрированы?" textLink="Регистрация" path="/signup" />
         </section>
 
     )

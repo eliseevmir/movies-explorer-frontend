@@ -10,3 +10,11 @@
   max-width: 1140px;
   margin: 0 auto 23px;
 }
+
+@media screen and (max-width: 600px) {
+  .title__name {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0 auto 28px;
+  }
+}

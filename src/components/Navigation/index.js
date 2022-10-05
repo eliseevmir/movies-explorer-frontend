@@ -5,8 +5,8 @@ function Navigation() {
 
     return (
         <nav className="navigation">
-            <Link to="#" className="navigation__films">Фильмы</Link>
-            <Link to="#" className="navigation__save-films">Сохраненные фильмы</Link>
+            <Link to="/movies" className="navigation__films">Фильмы</Link>
+            <Link to="/saved-movies" className="navigation__save-films">Сохраненные фильмы</Link>
         </nav>
     )
 }

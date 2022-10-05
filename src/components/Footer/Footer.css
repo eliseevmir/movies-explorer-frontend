@@ -39,3 +39,35 @@
   line-height: 16px;
   color: #000000;
 }
+
+@media screen and (max-width: 460px) {
+  .footer {
+    padding-bottom: 10px;
+  }
+
+  .footer__text {
+    margin: 0 0 30px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .footer__info {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .footer__school {
+    display: block;
+    margin: 0 auto;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .footer__link {
+    display: block;
+    margin: 12px auto 30px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

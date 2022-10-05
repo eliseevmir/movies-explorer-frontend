@@ -16,7 +16,7 @@ function Portfolio() {
                         target="_blank"
                         rel="noreferrer"
                     >
-                        <img src={linkImage} alt="Ссылка на страницу"></img>
+                        <img src={linkImage} alt="Ссылка на страницу" className="portfolio__image"></img>
                     </a>
                 </li>
                 <li className="portfolio__list-name">
@@ -27,7 +27,7 @@ function Portfolio() {
                         target="_blank"
                         rel="noreferrer"
                     >
-                        <img src={linkImage} alt="Ссылка на страницу"></img>
+                        <img src={linkImage} alt="Ссылка на страницу" className="portfolio__image"></img>
                     </a>
                 </li>
                 <li className="portfolio__list-name">
@@ -38,7 +38,7 @@ function Portfolio() {
                         target="_blank"
                         rel="noreferrer"
                     >
-                        <img src={linkImage} alt="Ссылка на страницу"></img>
+                        <img src={linkImage} alt="Ссылка на страницу" className="portfolio__image"></img>
                     </a>
                 </li>
             </ul></>

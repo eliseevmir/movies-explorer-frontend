@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Header.css";
 import ContentArea from "../ContentArea";
 import headerLogo from "../../image/logo.svg"
@@ -9,7 +10,9 @@ function Header({ children, className }) {
         <header className={className}>
             <ContentArea>
                 <div className="header__block">
-                    <img src={headerLogo} alt="Логотип" />
+                    <Link to="/">
+                        <img src={headerLogo} alt="Логотип" />
+                    </Link>
                     {children}
                 </div>
             </ContentArea>

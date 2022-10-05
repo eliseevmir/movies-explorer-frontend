@@ -1,7 +1,6 @@
 import "./AboutMe.css";
 import photoStudent from "../../image/photo.png";
 
-
 function AboutMe({ children }) {
     const [title, portfolio] = children;
     return (
@@ -10,13 +9,14 @@ function AboutMe({ children }) {
             <div className="student__card">
                 <div className="student__info">
                     <h2 className="student__name">Владимир</h2>
-                    <h3 className="student__data">Фронтенд-разработчик, 33 года</h3>
+                    <h3 className="student__data">Веб-разработчик, 33 года</h3>
                     <p className="student__text">
-                        Я родился и живу в Саратове, закончил факультет экономики СГУ. У
-                        меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь
-                        бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ
-                        Контур». После того, как прошёл курс по веб-разработке, начал
-                        заниматься фриланс-заказами и ушёл с постоянной работы.
+                        Я живу в городе Екатеринбург, имею опыт в сфере продаж, недавно
+                        начал изучать программирование, планирую сменить работу и
+                        развиваться в IT индустрии. Увлекаюсь биохимией и биомеханикой
+                        человеческого организма. Есть сертификат нутрициолога и диплом
+                        фитнес-тренера. С интересом погружаюсь во все новое, люблю различные
+                        задачи и находить пути для их решения.
                     </p>
                     <a
                         className="student__github"
@@ -27,7 +27,11 @@ function AboutMe({ children }) {
                         Github
                     </a>
                 </div>
-                <img className="student__photo" src={photoStudent} alt="Фотография студента"></img>
+                <img
+                    className="student__photo"
+                    src={photoStudent}
+                    alt="Фотография студента"
+                ></img>
             </div>
             {portfolio}
         </section>

@@ -34,3 +34,35 @@
   top: 33%;
   right: 0;
 }
+
+@media screen and (max-width: 768px) {
+  .portfolio {
+    margin: 91px auto 0;
+  }
+
+  .portfolio__list {
+    margin: 50px auto 0;
+  }
+  .portfolio__page {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .portfolio {
+    margin: 70px auto 0;
+  }
+
+  .portfolio__list {
+    margin: 20px auto 0;
+  }
+  .portfolio__page {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .portfolio__image {
+    width: 11px;
+    height: 11px;
+  }
+}

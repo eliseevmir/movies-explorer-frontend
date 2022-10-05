@@ -17,7 +17,7 @@ function MainRegister() {
                 </ButtonForm>
             </AuthForm>
 
-            <Question question="Уже зарегистрированы?" textLink="Войти" path="#" />
+            <Question question="Уже зарегистрированы?" textLink="Войти" path="/signin" />
         </section>
 
     )

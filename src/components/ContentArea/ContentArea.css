@@ -3,9 +3,14 @@
   margin: 0 auto;
 }
 
-/* @media screen and (max-width: 1280px) {
+@media screen and (max-width: 1200px) {
   .content-area {
-    max-width: auto;
-    padding: 0 70px;
+    padding: 0 30px;
   }
-} */
+}
+
+@media screen and (max-width: 600px) {
+  .content-area {
+    padding: 0 18px;
+  }
+}
