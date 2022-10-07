@@ -6,14 +6,13 @@
 }
 
 .not-found-err__status {
-  margin: 0;
   font: inherit;
   font-size: 140px;
   line-height: 169px;
 }
 
 .not-found-err__text {
-  margin: 5 auto 0;
+  margin: 5px auto 0;
   font-size: 16px;
   line-height: 19px;
 }
@@ -26,4 +25,33 @@
   font-size: 14px;
   line-height: 17px;
   color: #3456f3;
+}
+
+@media screen and (max-width: 768px) {
+  .not-found-err {
+    margin-top: 408px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .not-found-err {
+    margin-top: 329px;
+  }
+
+  .not-found-err__status {
+    font-size: 80px;
+    line-height: 97px;
+  }
+
+  .not-found-err__text {
+    margin: 10px auto 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .not-found-err__button {
+    margin: 284px 0 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
 }

@@ -6,14 +6,18 @@
 
 .more__button {
   display: block;
-  width: 320px;
-  height: 36px;
   margin: 0 auto;
-  padding: 0;
+  padding: 9.5px 146.5px;
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
   background-color: transparent;
   border: 1px solid #e8e8e8;
   border-radius: 6px;
+}
+
+@media screen and (max-width: 450px) {
+  .more__button {
+    padding: 9.5px 106.5px;
+  }
 }

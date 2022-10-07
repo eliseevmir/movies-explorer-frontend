@@ -1,0 +1,26 @@
+.authheader {
+  display: flex;
+  align-items: center;
+}
+
+.authheader__registration {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+}
+
+.authheader__button {
+  padding: 0;
+  margin: 0 0 0 30px;
+  width: 76px;
+  height: 32px;
+  background: #3456f3;
+  border-radius: 3px;
+  border: none;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+}

@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
 import ContentArea from "../ContentArea";
-import headerLogo from "../../image/logo.svg"
+import Navigation from "../Navigation";
+import Authorization from "./Authorization";
 
 
-function Header({ children, className }) {
+function Header({ variant }) {
+    const color = variant === "grey" ? "grey" : "white";
+    const className = `header header__color-${color}`;
 
     return (
         <header className={className}>
             <ContentArea>
                 <div className="header__block">
-                    <Link to="/">
-                        <img src={headerLogo} alt="Логотип" />
-                    </Link>
-                    {children}
+                    <Link to="/" className="header__logo" />
+                    <Navigation />
+                    <Authorization />
                 </div>
             </ContentArea>
         </header>

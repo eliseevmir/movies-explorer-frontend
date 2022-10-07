@@ -16,7 +16,7 @@ function UserInfo() {
                     <input className="user__input" id="user-email" type="email"></input>
                 </label>
 
-                <button type="submit" className="user__submit">Редактировать</button>
+                <button type="submit" className="user__button">Редактировать</button>
                 <button className="user__button">Выйти из аккаунта</button>
             </form>
 

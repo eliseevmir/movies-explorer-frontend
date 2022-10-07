@@ -1,6 +1,12 @@
 .user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   background: #ffffff;
+  max-width: 410px;
+  height: calc(100vh - 144px);
+  margin: auto;
 }
 
 .user__name {
@@ -12,10 +18,11 @@
 }
 
 .user__form {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  max-width: 410px;
-  margin: 123px auto 70px;
+  width: 100%;
+  margin: 123px auto 0;
 }
 
 .user__label {
@@ -43,24 +50,23 @@
   text-align: right;
 }
 
-.user__submit {
-  width: 100%;
-  border: none;
-  padding: 0;
-  margin: 220px 0 0 0;
-  background: transparent;
-  font-size: 13px;
-  line-height: 16px;
-}
-
 .user__button {
-  width: 100%;
   border: none;
   padding: 0;
-  margin: 16px 0 0 0;
+  margin-top: auto;
   background: transparent;
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
+}
+
+.user__button:last-child {
+  margin: 16px 0 0 0;
   color: #ee3465;
+}
+
+@media screen and (max-width: 445px) {
+  .user {
+    max-width: 260px;
+  }
 }

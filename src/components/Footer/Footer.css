@@ -70,4 +70,9 @@
     font-size: 12px;
     line-height: 15px;
   }
+  .footer__year {
+    font-size: 12px;
+    line-height: 15px;
+    color: #a0a0a0;
+  }
 }

@@ -17,3 +17,14 @@
   line-height: 17px;
   color: #3456f3;
 }
+
+@media screen and (max-width: 456px) {
+  .question__text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  .question__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

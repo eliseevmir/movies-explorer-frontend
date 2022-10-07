@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./Authorization.css";
+import "./NotAuthBox.css";
 
-function Authorization() {
+function NotAuthBox() {
 
     const navigate = useNavigate();
 
@@ -13,4 +13,4 @@ function Authorization() {
     )
 }
 
-export default Authorization
+export default NotAuthBox
