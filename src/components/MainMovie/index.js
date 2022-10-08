@@ -6,13 +6,15 @@ import MoviesCardList from "../MoviesCardList";
 function MainMovie({ children }) {
 
     return (
-        <main className="movie">
-            <SearchForm>
-                <FilterCheckbox />
-            </SearchForm>
-            <MoviesCardList />
-            {children}
-        </main>
+        <>
+            <main className="movie">
+                <SearchForm>
+                    <FilterCheckbox />
+                </SearchForm>
+                <MoviesCardList />
+                {children}
+            </main>
+        </>
     )
 }
 

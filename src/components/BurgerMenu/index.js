@@ -7,4 +7,4 @@ function BurgerMenu() {
     )
 }
 
-export default BurgerMenu
+export default BurgerMenu;
