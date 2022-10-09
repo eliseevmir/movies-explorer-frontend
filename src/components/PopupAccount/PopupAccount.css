@@ -43,7 +43,6 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-  margin: auto;
 }
 
 .popup__link:nth-child(2) {
@@ -67,7 +66,7 @@
   position: fixed;
   right: 22px;
   top: 22px;
-  background-image: url(../../image/close__popup.png);
+  background-image: url(../../image/close__popup.svg);
   background-repeat: no-repeat;
   width: 22px;
   height: 22px;
@@ -75,6 +74,11 @@
   border: none;
   padding: 0;
   background-size: contain;
+  transition: opacity 0.2s ease;
+}
+
+.popup__button:hover {
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 450px) {

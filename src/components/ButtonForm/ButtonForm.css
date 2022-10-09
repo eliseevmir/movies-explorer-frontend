@@ -9,4 +9,9 @@
   font-size: 14px;
   line-height: 17px;
   color: #ffffff;
+  transition: opacity 0.2s ease;
+}
+
+.button__submit:hover {
+  opacity: 0.8;
 }

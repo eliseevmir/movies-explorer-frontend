@@ -14,7 +14,7 @@ function Footer() {
                         <div>
                             <a
                                 href="https://practicum.yandex.ru/"
-                                className="footer__school"
+                                className="footer__link"
                                 target="_blank"
                                 rel="noreferrer"
                             >

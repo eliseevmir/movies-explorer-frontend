@@ -8,7 +8,7 @@ function NotAuthBox() {
     return (
         <div className="authorization">
             <Link to="/signup" className="authorization__registration">Регистрация</Link>
-            <button className="authorization__button" onClick={() => { navigate("/signin") }}>Войти</button>
+            <button type="button" className="authorization__button" onClick={() => { navigate("/signin") }}>Войти</button>
         </div>
     )
 }

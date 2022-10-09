@@ -13,7 +13,6 @@
 }
 
 .portfolio__list-name {
-  position: relative;
   list-style: none;
   border-bottom: 1px solid #e8e8e8;
 }
@@ -30,9 +29,12 @@
 }
 
 .portfolio__link {
-  position: absolute;
-  top: 33%;
-  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  font: inherit;
+  color: #000000;
 }
 
 @media screen and (max-width: 768px) {

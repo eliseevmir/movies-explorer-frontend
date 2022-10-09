@@ -19,7 +19,7 @@ function PopupAccount({ isOpen }) {
                         <Account />
                     </div>
 
-                    <button className="popup__button" />
+                    <button type="button" className="popup__button" />
                 </div>
             </div>
         </>

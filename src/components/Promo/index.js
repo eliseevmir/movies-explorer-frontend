@@ -14,7 +14,7 @@ function Promo() {
                     </div>
                     <img className="promo__earth" src={earth} alt="Изображение планеты Земля"></img>
                 </div>
-                <button className="promo__button">Узнать больше</button>
+                <button className="promo__button" type="button">Узнать больше</button>
             </ContentArea>
         </section >
 

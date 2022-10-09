@@ -22,12 +22,10 @@
 }
 .card__button_active {
   background-image: url(../../image/save__movie__on.svg);
-  background-size: contain;
-  width: 30px;
-  height: 30px;
-  background-repeat: no-repeat;
-  border: none;
-  border-radius: 50%;
+}
+
+.card__button_close {
+  background-image: url(../../image/card__button_close.svg);
 }
 
 .card__name {
