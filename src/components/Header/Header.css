@@ -1,0 +1,31 @@
+.header {
+  padding: 18px 0;
+}
+
+.header__color-grey {
+  background: #dddee3;
+}
+
+.header__color-white {
+  background: #fafafa;
+}
+
+.header__block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  background-image: url(../../image/logo.svg);
+  background-repeat: no-repeat;
+  align-self: center;
+  width: 38px;
+  height: 38px;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 15px 0;
+  }
+}

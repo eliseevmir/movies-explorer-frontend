@@ -1,0 +1,16 @@
+.content-area {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .content-area {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .content-area {
+    padding: 0 18px;
+  }
+}
