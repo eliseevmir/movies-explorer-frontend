@@ -1,0 +1,18 @@
+.card__button {
+  padding: 0;
+  background-image: url(../../image/save__movie__off.svg);
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 50%;
+}
+
+.card__button_save {
+  background-image: url(../../image/save__movie__on.svg);
+}
+
+.card__button:hover {
+  cursor: pointer;
+}

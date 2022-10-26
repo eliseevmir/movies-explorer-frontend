@@ -1,18 +1,19 @@
+import { useContext } from "react";
 import "./Authorization.css";
 import ProfileBox from "./ProfileBox";
 import NotAuthBox from "./NotAuthBox";
+import { CurrentUserContext } from "../../context/userContext/CurrentUserContext";
 
 function Authorization() {
-
-    // Логика авторизации реализуется в следующем этапе дипломной работы
-    const isAuth = true;
+    const { state } = useContext(CurrentUserContext);
+    const { loggedIn } = state;
 
     return (
         <div className="authheader">
-            {isAuth && <ProfileBox />}
-            {!isAuth && <NotAuthBox />}
+            {loggedIn && <ProfileBox />}
+            {!loggedIn && <NotAuthBox />}
         </div>
-    )
+    );
 }
 
 export default Authorization;

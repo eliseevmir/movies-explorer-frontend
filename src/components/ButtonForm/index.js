@@ -1,9 +1,9 @@
 import "./ButtonForm.css";
 
-function ButtonForm({ children }) {
+function ButtonForm({ children, disabled }) {
 
     return (
-        <button type="submit" className="button__submit">{children}</button>
+        <button type="submit" className="button__submit" disabled={disabled}>{children}</button>
     )
 }
 

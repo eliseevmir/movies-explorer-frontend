@@ -10,22 +10,8 @@
   margin: 14px;
 }
 
-.card__button {
-  padding: 0;
-  background-image: url(../../image/save__movie__off.svg);
-  background-size: contain;
-  width: 30px;
-  height: 30px;
-  background-repeat: no-repeat;
-  border: none;
-  border-radius: 50%;
-}
-.card__button_active {
-  background-image: url(../../image/save__movie__on.svg);
-}
-
-.card__button_close {
-  background-image: url(../../image/card__button_close.svg);
+.card__block {
+  max-width: calc(100% - 40px);
 }
 
 .card__name {
@@ -35,6 +21,10 @@
   line-height: 18px;
   color: #000000;
   margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex-shrink: 2;
 }
 
 .card__duration {
@@ -47,6 +37,5 @@
 }
 
 .card__image {
-  object-fit: cover;
   width: 100%;
 }

@@ -58,6 +58,16 @@
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.user__button:disabled {
+  opacity: 0.8;
+}
+
+.user__button:hover {
+  opacity: 0.8;
 }
 
 .user__button:last-child {
@@ -68,5 +78,15 @@
 @media screen and (max-width: 445px) {
   .user {
     max-width: 260px;
+  }
+}
+
+@media screen and (max-height: 525px) {
+  .user__name {
+    margin: 20px auto 0;
+  }
+
+  .user__form {
+    margin: 35px auto 0;
   }
 }

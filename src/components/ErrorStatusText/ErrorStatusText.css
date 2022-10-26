@@ -1,0 +1,14 @@
+.error-text {
+  text-align: center;
+  margin-top: auto;
+  color: #ee3465;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 450px) {
+  .error-text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

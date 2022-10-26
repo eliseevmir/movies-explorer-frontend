@@ -1,19 +1,15 @@
 import "./MoviesCardList.css";
 import MovieCard from "../MovieCard";
 
-function MoviesCardList() {
+function MoviesCardList({ movies }) {
     return (
         <section className="card">
             <ul className="card__list">
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
-                <MovieCard />
+                {movies.map((item) => (
+                    <MovieCard key={item.id || item.movieId} {...item} />
+                ))}
             </ul>
-
         </section>
-    )
+    );
 }
 export default MoviesCardList;

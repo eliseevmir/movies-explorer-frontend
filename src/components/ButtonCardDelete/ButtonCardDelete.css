@@ -1,0 +1,14 @@
+.card__button-delete {
+  padding: 0;
+  background-image: url(../../image/card__button_close.svg);
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 50%;
+}
+
+.card__button-delete:hover {
+  cursor: pointer;
+}
