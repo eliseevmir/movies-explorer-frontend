@@ -1,5 +1,3 @@
-import { currentUser } from "./CurrentUserContext";
-
 const reducer = (state, action) => {
     switch (action.type) {
         case "setUserData": {
@@ -17,7 +15,10 @@ const reducer = (state, action) => {
 
         case "signOut": {
             return {
-                ...currentUser,
+                name: "",
+                email: "",
+                loggedIn: false,
+                errorMessage: ""
             };
         }
 

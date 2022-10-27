@@ -3,7 +3,7 @@ import React from "react";
 export const currentUser = {
     name: "",
     email: "",
-    loggedIn: false,
+    loggedIn: Boolean(localStorage.getItem("token")),
     errorMessage: ""
 
 };

@@ -1,6 +1,8 @@
-// export const BASE_URL = "https://api.diploma.vb.nomoredomains.sbs";
-export const BASE_URL = "http://localhost:3001";
-const token = localStorage.getItem("token");
+export const BASE_URL = "https://api.diploma.vb.nomoredomains.sbs";
+
+function getToken() {
+    return localStorage.getItem("token") || ""
+}
 
 async function checkResponse(res) {
     if (res.ok) return res.json();
@@ -42,7 +44,7 @@ export const patchUserData = (name, email) => {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${getToken()}`,
         },
         body: JSON.stringify({ name, email }),
     }).then(checkResponse);
@@ -53,7 +55,7 @@ export const getSaveMovies = () => {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${getToken()}`,
         },
     }).then(checkResponse);
 };
@@ -63,7 +65,7 @@ export const postSaveMovies = (moviesData) => {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${getToken()}`,
         },
         body: JSON.stringify(moviesData),
     }).then(checkResponse);
@@ -74,7 +76,7 @@ export const deleteSaveMovies = (idMovies) => {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${getToken()}`,
         },
     }).then(checkResponse);
 };

@@ -149,7 +149,7 @@ function MainMovie() {
             return displayMoviesList;
         }
 
-        return moviesList.filter((movie) => {
+        return [...moviesList || []].filter((movie) => {
             return movie.duration <= DURATIONTIME;
         });
     }
