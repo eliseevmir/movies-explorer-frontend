@@ -2,7 +2,7 @@ import "./AboutProject.css";
 
 function AboutProject({ children }) {
     return (
-        <section className="project">
+        <section className="project" id="project">
             {children}
             <div className="project__stage">
                 <div className="project__container">

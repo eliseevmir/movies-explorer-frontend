@@ -14,6 +14,7 @@ function MainContextRender({ savedMovies, children }) {
         movies: storage.getItem("movies"),
         query: storage.getItem("query"),
         savedQuery: storage.getItem("savedQuery"),
+        isShort: storage.getItem("isShort")
     };
     const [state, dispatch] = useReducer(reducer, defaultState);
 

@@ -12,7 +12,7 @@ export const defaultStateMovies = {
     movies: [],
     query: null,
     savedQuery: null,
-    isShort: false
+    isShort: false,
 };
 
 export function reducer(state, action) {
@@ -21,8 +21,9 @@ export function reducer(state, action) {
             const newState = { ...state, ...action.payload };
             storage.setItem("movies", newState.movies);
             storage.setItem("query", newState.query);
-            storage.setItem("savedQuery", newState.savedQuery)
-            return newState
+            storage.setItem("savedQuery", newState.savedQuery);
+            storage.setItem("isShort", newState.isShort);
+            return newState;
         }
 
         case "saveMovie": {
@@ -36,7 +37,7 @@ export function reducer(state, action) {
                 trailerLink,
                 nameRU,
                 nameEN,
-                id
+                id,
             } = action.payload;
             const movieData = {
                 country,
@@ -49,24 +50,23 @@ export function reducer(state, action) {
                 nameEN,
                 movieId: id,
                 thumbnail: `${APISERVERHOSTNAME}${image.formats.thumbnail.url}`,
-                image: `${APISERVERHOSTNAME}${image.url}`
+                image: `${APISERVERHOSTNAME}${image.url}`,
             };
 
-            const savedMovies = [...state.savedMovies || []].concat([movieData]);
+            const savedMovies = [...(state.savedMovies || [])].concat([movieData]);
             const newState = { ...state, savedMovies: [...new Set(savedMovies)] };
-            movies.postSaveMovies(movieData)
-            return newState
+            movies.postSaveMovies(movieData);
+            return newState;
         }
 
         case "deleteMovie": {
-            const savedMovies = [...state.savedMovies || []].filter((item) => {
-                return item.movieId !== action.payload.movieId
+            const savedMovies = [...(state.savedMovies || [])].filter((item) => {
+                return item.movieId !== action.payload.movieId;
             });
-            const newState = { ...state, savedMovies }
-            movies.deleteSaveMovies(action.payload.movieId)
-            return newState
+            const newState = { ...state, savedMovies };
+            movies.deleteSaveMovies(action.payload.movieId);
+            return newState;
         }
-
 
         case "setPending":
             return { ...state, pending: action.payload };

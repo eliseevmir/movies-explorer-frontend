@@ -14,7 +14,7 @@ export const register = (name, email, password) => {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ name, email, password }),
-    }).then(checkResponse)
+    }).then(checkResponse);
 };
 
 export const authorization = (email, password) => {
@@ -44,9 +44,9 @@ export const patchUserData = (name, email) => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ name, email })
+        body: JSON.stringify({ name, email }),
     }).then(checkResponse);
-}
+};
 
 export const getSaveMovies = () => {
     return fetch(`${BASE_URL}/movies`, {
@@ -56,7 +56,7 @@ export const getSaveMovies = () => {
             Authorization: `Bearer ${token}`,
         },
     }).then(checkResponse);
-}
+};
 
 export const postSaveMovies = (moviesData) => {
     return fetch(`${BASE_URL}/movies`, {
@@ -65,9 +65,9 @@ export const postSaveMovies = (moviesData) => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(moviesData)
+        body: JSON.stringify(moviesData),
     }).then(checkResponse);
-}
+};
 
 export const deleteSaveMovies = (idMovies) => {
     return fetch(`${BASE_URL}/movies/${idMovies}`, {
@@ -75,6 +75,6 @@ export const deleteSaveMovies = (idMovies) => {
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
-        }
+        },
     }).then(checkResponse);
-}
+};

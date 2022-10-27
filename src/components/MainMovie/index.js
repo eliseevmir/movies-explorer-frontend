@@ -84,7 +84,7 @@ function MainMovie() {
         });
     }
 
-    function handleOnSearch(query) {
+    async function handleOnSearch(query) {
         dispatch({
             type: "setPending",
             payload: true,
@@ -159,6 +159,7 @@ function MainMovie() {
             <main className="movie">
                 <SearchForm onSearch={handleOnSearch} pending={pending}>
                     <FilterCheckbox
+                        value={isShort}
                         onChange={(checked) => {
                             dispatch({
                                 type: "setState",
