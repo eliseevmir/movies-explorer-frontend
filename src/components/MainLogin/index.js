@@ -1,5 +1,5 @@
-import { useState, useMemo, useContext } from "react";
-import { useNavigate } from "react-router-dom"
+import { useState, useMemo, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./MainLogin.css";
 import AuthForm from "../AuthForm";
 import InpurForm from "../InputForm";
@@ -9,11 +9,10 @@ import ErrorStatusText from "../ErrorStatusText";
 import { REGEXEMAIL } from "../../utils/constant";
 import { CurrentUserContext } from "../../context/userContext/CurrentUserContext";
 
-
 function MainLogin({ onSubmit }) {
     const navigate = useNavigate();
     const [errorText, setErrorText] = useState("");
-    const { dispatch } = useContext(CurrentUserContext);
+    const { state, dispatch } = useContext(CurrentUserContext);
     const [inputValues, setInputValues] = useState({
         email: "",
         password: "",
@@ -25,11 +24,18 @@ function MainLogin({ onSubmit }) {
         emailValid: false,
         passwordValid: false,
     });
+    const [disabled, setDisabled] = useState(false);
 
     const isValid = useMemo(() => {
-        return errorsInput.emailValid && errorsInput.passwordValid
-    }, [errorsInput])
+        return errorsInput.emailValid && errorsInput.passwordValid;
+    }, [errorsInput]);
 
+    useEffect(() => {
+        console.log(state.loggedIn)
+        if (state.loggedIn) {
+            navigate(-1)
+        }
+    }, [navigate, state.loggedIn])
 
     function validate(value, message, name) {
         switch (value) {
@@ -69,8 +75,9 @@ function MainLogin({ onSubmit }) {
 
     function handleSubmit(e) {
         e.preventDefault();
+        setDisabled(true);
         onSubmit(inputValues)
-            .then(data => {
+            .then((data) => {
                 setInputValues({
                     email: "",
                     password: "",
@@ -80,11 +87,14 @@ function MainLogin({ onSubmit }) {
                     type: "setLogged",
                     payload: true,
                 });
-                setErrorText("")
+                setErrorText("");
                 navigate("/movies");
-
+                setDisabled(false);
             })
-            .catch(err => setErrorText(err.message))
+            .catch((err) => {
+                setErrorText(err.message);
+                setDisabled(false);
+            });
     }
 
     function handleChange(e) {
@@ -110,6 +120,7 @@ function MainLogin({ onSubmit }) {
                     name="email"
                     handleChange={handleChange}
                     errorText={errorsInput.emailErrorText}
+                    disabled={disabled}
                 />
                 <InpurForm
                     label="Пароль"
@@ -117,9 +128,10 @@ function MainLogin({ onSubmit }) {
                     name="password"
                     handleChange={handleChange}
                     errorText={errorsInput.passwordErrorText}
+                    disabled={disabled}
                 />
                 <ErrorStatusText errorText={errorText} />
-                <ButtonForm disabled={!isValid}>Войти</ButtonForm>
+                <ButtonForm disabled={!isValid || disabled}>Войти</ButtonForm>
             </AuthForm>
 
             <Question

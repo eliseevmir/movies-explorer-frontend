@@ -1,5 +1,5 @@
-import { useState, useMemo, useContext } from "react";
-import { useNavigate } from "react-router-dom"
+import { useState, useMemo, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./MainRegister.css";
 import AuthForm from "../AuthForm";
 import InpurForm from "../InputForm";
@@ -12,7 +12,7 @@ import { CurrentUserContext } from "../../context/userContext/CurrentUserContext
 function MainRegister({ onSubmit }) {
     const navigate = useNavigate();
     const [errorText, setErrorText] = useState("");
-    const { dispatch } = useContext(CurrentUserContext);
+    const { state, dispatch } = useContext(CurrentUserContext);
     const [inputValues, setInputValues] = useState({
         name: "",
         email: "",
@@ -26,10 +26,22 @@ function MainRegister({ onSubmit }) {
         emailValid: false,
         passwordValid: false,
     });
+    const [disabled, setDisabled] = useState(false);
 
     const isValid = useMemo(() => {
-        return errorsInput.emailValid && errorsInput.passwordValid && errorsInput.emailValid
-    }, [errorsInput])
+        return (
+            errorsInput.emailValid &&
+            errorsInput.passwordValid &&
+            errorsInput.emailValid
+        );
+    }, [errorsInput]);
+
+    useEffect(() => {
+        console.log(state.loggedIn)
+        if (state.loggedIn) {
+            navigate(-1)
+        }
+    }, [navigate, state.loggedIn])
 
     function validate(value, message, name) {
         switch (value) {
@@ -68,6 +80,10 @@ function MainRegister({ onSubmit }) {
 
     function handleSubmit(e) {
         e.preventDefault();
+        if (disabled) {
+            return;
+        }
+        setDisabled(true);
         onSubmit(inputValues)
             .then((data) => {
                 localStorage.setItem("token", data.token);
@@ -81,12 +97,13 @@ function MainRegister({ onSubmit }) {
                     email: "",
                     password: "",
                 });
-                setErrorText("")
+                setErrorText("");
+                setDisabled(false);
             })
-            .catch(err => {
-                setErrorText(err.message)
-            })
-
+            .catch((err) => {
+                setErrorText(err.message);
+                setDisabled(false);
+            });
     }
 
     function handleChange(e) {
@@ -101,7 +118,6 @@ function MainRegister({ onSubmit }) {
         } else {
             validate(e.target.validity.valid, e.target.validationMessage, name);
         }
-
     }
 
     return (
@@ -115,6 +131,7 @@ function MainRegister({ onSubmit }) {
                     handleChange={handleChange}
                     min={2}
                     max={30}
+                    disabled={disabled}
                 />
                 <InpurForm
                     errorText={errorsInput.emailErrorText}
@@ -122,6 +139,7 @@ function MainRegister({ onSubmit }) {
                     type="email"
                     name="email"
                     handleChange={handleChange}
+                    disabled={disabled}
                 />
                 <InpurForm
                     errorText={errorsInput.passwordErrorText}
@@ -130,9 +148,12 @@ function MainRegister({ onSubmit }) {
                     name="password"
                     handleChange={handleChange}
                     min={8}
+                    disabled={disabled}
                 />
                 <ErrorStatusText errorText={errorText} />
-                <ButtonForm disabled={!isValid} >Зарегистрироваться</ButtonForm>
+                <ButtonForm disabled={!isValid || disabled}>
+                    Зарегистрироваться
+                </ButtonForm>
             </AuthForm>
 
             <Question

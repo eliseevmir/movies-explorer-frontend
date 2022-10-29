@@ -81,7 +81,6 @@ function App() {
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </CurrentUserContext.Provider>
-            {/* <PopupAccount isOpen={popupWindow} /> */}
         </>
     );
 }

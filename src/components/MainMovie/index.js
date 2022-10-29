@@ -1,4 +1,11 @@
-import { useEffect, useMemo, useCallback, useRef, useContext } from "react";
+import {
+  useEffect,
+  useMemo,
+  useCallback,
+  useRef,
+  useContext,
+  useState,
+} from "react";
 import "./MainMovie.css";
 import SearchForm from "../SearchForm";
 import FilterCheckbox from "../FilterCheckbox";
@@ -10,174 +17,156 @@ import Preloader from "../Preloader";
 import MoviesListNotFound from "../MoviesListNotFound";
 import { MoviesContext } from "../../context/moviesContext/reducer";
 import { apiMovie } from "../../utils/MoviesApi";
-import { DURATIONTIME } from "../../utils/constant";
+import filmFilter from "../../utils/filmFilter";
 
 function MainMovie() {
-    const { state, dispatch } = useContext(MoviesContext);
+  const { state, dispatch } = useContext(MoviesContext);
+  const { pending, hasError, isShort, query, allMovies } = state;
 
-    const getPerPage = useCallback(() => {
-        const mediaScreen = window.screen.width;
-        switch (true) {
-            case mediaScreen >= 1280:
-                return [12, 3];
-            case mediaScreen >= 480:
-                return [8, 2];
-            case mediaScreen < 480:
-                return [5, 2];
-            default:
-                return [12, 3];
-        }
-    }, []);
-
-    const { movies, displayMovies, cardShow, pending, hasError, isShort } = state;
-
-    const listMovies = displayShowShort(displayMovies, movies, isShort);
-
-    const onResizeTimeOutRef = useRef(null);
-
-    useEffect(() => {
-        dispatch({
-            type: "setState",
-            payload: {
-                displayMovies: [...(movies || [])].slice(0, cardShow[0]),
-            },
-        });
-    }, [movies, cardShow, dispatch]);
-
-    useEffect(() => {
-        const onWindowResize = () => {
-            if (onResizeTimeOutRef.current) {
-                clearTimeout(onResizeTimeOutRef.current);
-            }
-
-            onResizeTimeOutRef.current = setTimeout(() => {
-                dispatch({
-                    type: "setState",
-                    payload: {
-                        cardShow: getPerPage(),
-                    },
-                });
-            }, 250);
-        };
-        window.addEventListener("resize", onWindowResize);
-        return () => {
-            window.removeEventListener("resize", onWindowResize);
-        };
-    }, [getPerPage, dispatch]);
-
-    const displayShowMore = useMemo(() => {
-        return (
-            displayMovies &&
-            movies &&
-            movies.length > displayMovies.length &&
-            !isShort
-        );
-    }, [displayMovies, movies, isShort]);
-
-    function handleShowMore() {
-        const startMovies = displayMovies ? displayMovies.length : 0;
-        dispatch({
-            type: "setState",
-            payload: {
-                displayMovies: [...(movies || [])].slice(0, startMovies + cardShow[1]),
-            },
-        });
+  const getPerPage = useCallback(() => {
+    const mediaScreen = window.screen.width;
+    switch (true) {
+      case mediaScreen >= 1280:
+        return [12, 3];
+      case mediaScreen >= 480:
+        return [8, 2];
+      case mediaScreen < 480:
+        return [5, 2];
+      default:
+        return [12, 3];
     }
+  }, []);
 
-    async function handleOnSearch(query) {
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  // filmFilter(allMovies, { query, isShort })
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const onResizeTimeOutRef = useRef(null);
+
+  useEffect(() => {
+    const onWindowResize = () => {
+      if (onResizeTimeOutRef.current) {
+        clearTimeout(onResizeTimeOutRef.current);
+      }
+
+      onResizeTimeOutRef.current = setTimeout(() => {
         dispatch({
-            type: "setPending",
-            payload: true,
+          type: "setState",
+          payload: {
+            cardShow: getPerPage(),
+          },
         });
+      }, 250);
+    };
+    window.addEventListener("resize", onWindowResize);
+    return () => {
+      window.removeEventListener("resize", onWindowResize);
+    };
+  }, [getPerPage, dispatch]);
 
-        apiMovie
-            .getMoviesOnSearch()
-            .then((movies) => {
-                const querys = String(query || "")
-                    .split(" ")
-                    .map((item) =>
-                        item
-                            .trim()
-                            .toLowerCase()
-                            .replace(/[^a-z0-9A-ZА-Я-]/gi, "")
-                    );
-
-                return movies.filter((movie) => {
-                    return querys
-                        .map((query) => {
-                            return movie.nameRU.trim().toLowerCase().indexOf(query) !== -1;
-                        })
-
-                        .some(Boolean);
-                });
-            })
-            .then((movies) => {
-                dispatch({
-                    type: "setState",
-                    payload: {
-                        movies,
-                        pending: false,
-                        query,
-                    },
-                });
-            })
-            .catch((err) => {
-                dispatch({
-                    type: "setState",
-                    payload: {
-                        hasError: true,
-                        pending: false,
-                        displayMovies: null,
-                    },
-                });
-                console.error(err);
-            });
+  useEffect(() => {
+    if (!allMovies.length) {
+      return;
     }
+    dispatch({
+      type: "setState",
+      payload: {
+        query,
+      },
+    });
 
-    const notFound = useMemo(() => {
-        return (
-            !pending &&
-            !hasError &&
-            movies !== null &&
-            displayMovies !== null &&
-            displayMovies.length === 0
-        );
-    }, [displayMovies, pending, hasError, movies]);
+    if (!query) {
+      return;
+    }
+    setFilteredMovies(filmFilter(allMovies, { query, isShort }));
+  }, [query, allMovies, dispatch, isShort]);
 
-    function displayShowShort(displayMoviesList, moviesList, isShort) {
-        if (!isShort) {
-            return displayMoviesList;
-        }
+  const [dispalyPerPage, loadPerPage] = getPerPage();
 
-        return [...moviesList || []].filter((movie) => {
-            return movie.duration <= DURATIONTIME;
+  const hasMore = useMemo(() => {
+    return dispalyPerPage * currentPage < filteredMovies.length;
+  }, [currentPage, dispalyPerPage, filteredMovies.length]);
+
+  const moviesSlice = useMemo(() => {
+    return currentPage === 1
+      ? dispalyPerPage
+      : dispalyPerPage + loadPerPage * (currentPage - 1);
+  }, [currentPage, dispalyPerPage, loadPerPage]);
+
+  async function handleOnSearch(query) {
+    if (!allMovies.length) {
+      try {
+        dispatch({
+          type: "setPending",
+          payload: true,
         });
+        const moviesResponse = await apiMovie.getMovies();
+        dispatch({
+          type: "setState",
+          payload: {
+            allMovies: moviesResponse,
+            query,
+            hasError: false,
+            pending: false,
+          },
+        });
+      } catch (e) {
+        console.error(e);
+        dispatch({
+          type: "setState",
+          payload: {
+            hasError: true,
+            pending: false,
+          },
+        });
+      }
+    } else {
+      dispatch({
+        type: "setState",
+        payload: {
+          query,
+        },
+      });
     }
+  }
 
-    return (
-        <>
-            <main className="movie">
-                <SearchForm onSearch={handleOnSearch} pending={pending}>
-                    <FilterCheckbox
-                        value={isShort}
-                        onChange={(checked) => {
-                            dispatch({
-                                type: "setState",
-                                payload: {
-                                    isShort: checked,
-                                },
-                            });
-                        }}
-                    />
-                </SearchForm>
-                {pending && <Preloader />}
-                {!pending && displayMovies && <MoviesCardList movies={listMovies} />}
-                {notFound && <MoviesListNotFound />}
-                {hasError && <MoviesListError />}
-                {displayShowMore ? <More onClick={handleShowMore} /> : <Block />}
-            </main>
-        </>
-    );
+  const movies = filteredMovies.slice(0, moviesSlice);
+  const notFound = useMemo(() => {
+    return !movies.length && !hasError && !!allMovies.length && query;
+  }, [hasError, movies.length, allMovies, query]);
+
+  return (
+    <>
+      <main className="movie">
+        <SearchForm onSearch={handleOnSearch} pending={pending}>
+          <FilterCheckbox
+            value={isShort}
+            onChange={(checked) => {
+              dispatch({
+                type: "setState",
+                payload: {
+                  isShort: checked,
+                },
+              });
+            }}
+          />
+        </SearchForm>
+        {pending && <Preloader />}
+        {!pending && (
+          <MoviesCardList
+            movies={movies}
+          />
+        )}
+        {notFound && <MoviesListNotFound />}
+        {hasError && <MoviesListError />}
+        {hasMore ? (
+          <More onClick={() => setCurrentPage((n) => n + 1)} />
+        ) : (
+          <Block />
+        )}
+      </main>
+    </>
+  );
 }
 
 export default MainMovie;

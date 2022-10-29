@@ -1,35 +1,46 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useState, useMemo } from "react";
+import { useContext, useState, useMemo, useEffect } from "react";
 import "./UserInfo.css";
 import { CurrentUserContext } from "../../context/userContext/CurrentUserContext";
-import storage from "../../utils/Storage"
+import storage from "../../utils/Storage";
 import { REGEXEMAIL } from "../../utils/constant";
 import * as mainApi from "../../utils/MainApi";
 
 function UserInfo() {
     const { state, dispatch } = useContext(CurrentUserContext);
-    const { name } = state;
+    const { name, email } = state;
     const navigate = useNavigate();
 
-    const [inputValues, setInputValues] = useState({
-        name: "",
-        email: "",
-    });
+    const [pending, setPending] = useState(false);
 
-    const isDiff = useMemo(() => {
-        return inputValues.name !== state.name || inputValues.email !== state.email
-    }, [inputValues, state])
+    const [inputValues, setInputValues] = useState({
+        name,
+        email,
+    });
 
     const [errorsInput, setErrorsInput] = useState({
         nameErrorText: "",
         emailErrorText: "",
-        nameValid: false,
-        emailValid: false,
+        nameValid: true,
+        emailValid: true,
     });
 
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [successMessage, setSuccsessMessage] = useState(null);
+
+    useEffect(() => {
+        if (inputValues.name !== state.name || inputValues.email !== state.email) {
+            setSuccsessMessage(null);
+        }
+    }, [inputValues, state]);
+
+    const isDiff = useMemo(() => {
+        return inputValues.name !== state.name || inputValues.email !== state.email;
+    }, [inputValues, state]);
+
     const isValid = useMemo(() => {
-        return errorsInput.emailValid && errorsInput.nameValid && isDiff
-    }, [errorsInput, isDiff])
+        return errorsInput.emailValid && errorsInput.nameValid;
+    }, [errorsInput]);
 
     function validate(value, message, name) {
         switch (value) {
@@ -67,30 +78,40 @@ function UserInfo() {
             }));
     }
 
-
-    function handleUpdateUser({ name, email }) {
-        mainApi.patchUserData(name, email)
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (pending) {
+            return;
+        }
+        setPending(true);
+        const { name, email } = inputValues;
+        mainApi
+            .patchUserData(name, email)
             .then((res) => {
                 dispatch({
                     type: "setUserData",
                     payload: {
                         name: res.name,
-                        email: res.email
-                    }
-                })
-                setInputValues({
-                    email: "",
-                    password: "",
+                        email: res.email,
+                    },
                 });
+                setPending(false);
+                setSuccsessMessage("Данные успешно изменены");
             })
             .catch((err) => {
+                err.message === "Необходима авторизация" &&
+                    dispatch({
+                        type: "setLogged",
+                        action: false,
+                    });
+                setPending(false);
+                setErrorMessage(err.message);
+                storage.resetItem("query");
+                storage.resetItem("isShort");
+                localStorage.removeItem("token");
+                navigate("/");
                 console.error(err);
             });
-    }
-
-    function handleSubmit(e) {
-        e.preventDefault();
-        handleUpdateUser(inputValues)
     }
 
     function handleChange(e) {
@@ -112,16 +133,16 @@ function UserInfo() {
             type: "signOut",
         });
         localStorage.removeItem("token");
-        storage.resetItem();
-        storage.resetQuery();
-        navigate("/signin");
+        storage.resetItem("query");
+        storage.resetItem("isShort");
+        navigate("/");
     }
 
     return (
         <section className="user">
             <h1 className="user__name">Привет, {name}</h1>
 
-            <form className="user__form" onSubmit={handleSubmit} >
+            <form className="user__form" onSubmit={handleSubmit}>
                 <label className="user__label">
                     Имя
                     <input
@@ -132,9 +153,10 @@ function UserInfo() {
                         id="user-name"
                         type="text"
                         onChange={handleChange}
-
                         required
-                    ></input>
+                        value={inputValues.name}
+                        disabled={pending}
+                    />
                 </label>
                 <label className="user__label">
                     E-mail
@@ -145,14 +167,30 @@ function UserInfo() {
                         type="email"
                         onChange={handleChange}
                         required
-                    ></input>
+                        value={inputValues.email}
+                        disabled={pending}
+                    />
                 </label>
                 <span className="form__error">{errorsInput.nameErrorText || ""}</span>
                 <span className="form__error">{errorsInput.emailErrorText || ""}</span>
-                <button type="submit" className="user__button" disabled={!isValid}>
+                {errorMessage !== null && (
+                    <span className="form__error">{errorMessage}</span>
+                )}
+                {successMessage !== null && (
+                    <span className="form__success">{successMessage}</span>
+                )}
+                <button
+                    type="submit"
+                    className="user__button"
+                    disabled={!isValid || !isDiff || pending}
+                >
                     Редактировать
                 </button>
-                <button type="button" className="user__button" onClick={handleSignOutClick}>
+                <button
+                    type="button"
+                    className="user__button"
+                    onClick={handleSignOutClick}
+                >
                     Выйти из аккаунта
                 </button>
             </form>

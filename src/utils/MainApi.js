@@ -1,7 +1,8 @@
 export const BASE_URL = "https://api.diploma.vb.nomoredomains.sbs";
+// export const BASE_URL = "http://localhost:3001";
 
 function getToken() {
-    return localStorage.getItem("token") || ""
+    return localStorage.getItem("token") || "";
 }
 
 async function checkResponse(res) {

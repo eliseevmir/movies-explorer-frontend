@@ -5,7 +5,7 @@ class MoviesApi {
         this._baseUrl = baseUrl;
     }
 
-    getMoviesOnSearch() {
+    getMovies() {
         return new Promise((resolve, reject) => {
             fetch(this._baseUrl, {
                 method: "GET"

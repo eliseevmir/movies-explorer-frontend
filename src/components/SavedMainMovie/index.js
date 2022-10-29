@@ -8,30 +8,22 @@ import filmFilter from "../../utils/filmFilter";
 import "./SavedMainMovie.css";
 
 function SavedMainMovie() {
-    const { state, dispatch } = useContext(MoviesContext);
-    const { savedMovies, isShort } = state;
-    const [savedQuery, setSavedQuery] = useState(null);
+    const { state } = useContext(MoviesContext);
+    const { savedMovies } = state;
+    const [isShort, setIsShort] = useState(false)
+    const [query, setQuery] = useState(null);
 
-    const movies = filmFilter(savedMovies, { query: savedQuery, isShort });
+    const movies = filmFilter(savedMovies, { query, isShort });
 
-    function handleOnSearch(query) {
-        setSavedQuery(query)
-    }
+
 
     return (
         <>
             <main className="movie">
-                <SearchForm onSearch={handleOnSearch} searchList={true}>
+                <SearchForm onSearch={(str) => setQuery(str)} searchList={true}>
                     <FilterCheckbox
                         value={isShort}
-                        onChange={(checked) => {
-                            dispatch({
-                                type: "setState",
-                                payload: {
-                                    isShort: checked,
-                                },
-                            });
-                        }}
+                        onChange={(checked) => setIsShort(checked)}
                     />
                 </SearchForm>
                 <MoviesCardList movies={movies || []} />

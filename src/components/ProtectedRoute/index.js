@@ -24,8 +24,8 @@ function ProtectedRoute({ component: Component }) {
                     });
                     setStatus("signet");
                 })
-                .catch((res) => {
-                    console.error(res);
+                .catch((err) => {
+                    console.error(err);
                     setStatus("failed");
                 });
         } else {
@@ -41,11 +41,11 @@ function ProtectedRoute({ component: Component }) {
             return <Component />;
 
         case "nosignet":
-            return <Navigate to="/signup" />;
+            return <Navigate to="/" />;
 
         case "failed":
         default:
-            return <Navigate to="/signup" />;
+            return <Navigate to="/" />;
     }
 }
 

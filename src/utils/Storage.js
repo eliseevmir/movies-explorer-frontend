@@ -3,30 +3,21 @@ const storage = {
         const storageItem = localStorage.getItem(name);
 
         if (storageItem === null) {
-            return null
+            return null;
         }
         try {
-            return JSON.parse(storageItem)
+            return JSON.parse(storageItem);
         } catch (e) {
-            return null
+            return null;
         }
     },
 
     setItem: (name, data) => {
-        localStorage.setItem(name, JSON.stringify(data))
+        localStorage.setItem(name, JSON.stringify(data));
     },
 
-    resetItem: () => localStorage.removeItem("movies"),
-    resetQuery: () => localStorage.removeItem("query"),
 
-    // getToken: () => storage.getItem("token"),
-
-    // setToken: (token) => {
-    //     storage.setItem("token", token)
-    // },
-
-    // resetToken: () => localStorage.removeItem("token"),
-
-}
+    resetItem: (name) => localStorage.removeItem(name)
+};
 
 export default storage;

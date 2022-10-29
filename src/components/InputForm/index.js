@@ -1,6 +1,6 @@
 import "./InputForm.css";
 
-function InpurForm({ label, type, name, handleChange, errorText, min, max }) {
+function InpurForm({ label, type, name, handleChange, errorText, min, max, disabled }) {
     return (
         <label className="form__label">
             {label}
@@ -12,6 +12,7 @@ function InpurForm({ label, type, name, handleChange, errorText, min, max }) {
                 maxLength={max}
                 onChange={handleChange}
                 required
+                disabled={disabled}
             />
             <span className="form__error">{errorText || ""}</span>
         </label>
