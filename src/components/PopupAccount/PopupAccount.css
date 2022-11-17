@@ -6,14 +6,18 @@
   left: 0;
   bottom: 0;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.3);
   visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s ease, opacity 0.3s ease;
 }
 
 .popup_opened {
   visibility: visible;
+  opacity: 1;
 }
+
 .popup__container {
+  position: relative;
   margin-left: auto;
   background: #fafafa;
   max-width: 520px;
@@ -79,6 +83,12 @@
 
 .popup__button:hover {
   opacity: 0.7;
+}
+
+.popup__overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+  inset: 0;
+  position: fixed;
 }
 
 @media screen and (max-width: 450px) {

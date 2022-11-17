@@ -4,6 +4,7 @@ import Account from "../../components/Account";
 import UserInfo from "../../components/UserInfo";
 
 function Profile() {
+
     return (
         <>
             <Header className="header header__color-white">

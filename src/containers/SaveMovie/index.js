@@ -1,19 +1,16 @@
 import Header from "../../components/Header";
-import MainMovie from "../../components/MainMovie";
-import Block from "../../components/Block"
+import SavedMainMovie from "../../components/SavedMainMovie";
 import Footer from "../../components/Footer";
-
+import MoviesContextProvider from "../../components/MoviesContextProvider";
 
 function SaveMovie() {
 
     return (
-        <>
+        <MoviesContextProvider>
             <Header />
-            <MainMovie >
-                <Block />
-            </MainMovie>
+            <SavedMainMovie />
             <Footer />
-        </>
+        </MoviesContextProvider>
     )
 }
 

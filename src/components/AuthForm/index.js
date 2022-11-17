@@ -1,15 +1,10 @@
 import "./AuthForm.css";
 
-function AuthForm({ children }) {
-    const [inputName, inputEmail, inputPassword, button] = children;
-
+function AuthForm({ children, handleSubmit }) {
     return (
 
-        <form className="form" id="auth-form">
-            {inputName}
-            {inputEmail}
-            {inputPassword}
-            {button}
+        <form className="form" id="auth-form" onSubmit={handleSubmit}>
+            {children}
         </form>
     )
 }

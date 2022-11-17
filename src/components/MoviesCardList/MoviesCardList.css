@@ -2,6 +2,7 @@
   max-width: 1140px;
   margin: 0 auto;
   padding-bottom: 30px;
+  min-height: 13vh;
 }
 .card__list {
   width: 100%;

@@ -3,14 +3,14 @@ import AuthHeader from "../../components/AuthHeader";
 import MainLogin from "../../components/MainLogin";
 
 
-function Login() {
+function Login({ onSubmit }) {
 
     return (
         <AuthBlock>
             <AuthHeader>
                 Рады видеть!
             </AuthHeader>
-            <MainLogin />
+            <MainLogin onSubmit={onSubmit} />
         </AuthBlock>
     )
 }

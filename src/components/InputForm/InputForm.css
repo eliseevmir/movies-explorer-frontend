@@ -24,3 +24,11 @@
   color: #ee3465;
   margin: 4px 0;
 }
+
+.form__success {
+  height: 12px;
+  font-size: 10px;
+  line-height: 12px;
+  color: #2be080;
+  margin: 4px 0;
+}

@@ -36,6 +36,7 @@
   border: 1px solid rgba(0, 0, 0, 0.6);
   border-radius: 3px;
   background-color: transparent;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1024px) {

@@ -3,14 +3,14 @@ import AuthHeader from "../../components/AuthHeader";
 import MainRegister from "../../components/MainRegister";
 
 
-function Register() {
+function Register({ onSubmit }) {
 
     return (
         <AuthBlock>
             <AuthHeader>
                 Добро пожаловать!
             </AuthHeader>
-            <MainRegister />
+            <MainRegister onSubmit={onSubmit} />
         </AuthBlock>
     )
 }
